@@ -32,22 +32,7 @@ public abstract class BaseModelDAO<T> implements IBaseModelDAO<T>, IClosable {
 
 
     public T find(String id) {
-
-        EntityTransaction transaction = entityManager.getTransaction();
-
-        T object = null;
-        try {
-            transaction.begin();
-
-            object = entityManager.find(getTypeClass(), id);
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-            e.printStackTrace();
-        } finally {
-            return object;
-        }
-
+        return entityManager.find(getTypeClass(), id);
     }
 
     public void delete(String id) {
