@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="jpaModule" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>jmp.jpa.models.Address</class>
+        <class>jmp.jpa.models.Employee</class>
+        <class>jmp.jpa.models.EmployeeStatus</class>
+        <class>jmp.jpa.models.Personal</class>
+        <class>jmp.jpa.models.Project</class>
+        <class>jmp.jpa.models.Unit</class>
+
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="show_sql" value="true"/>
+            <property name="format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+            <property name="hibernate.connection.url"
+                      value="jdbc:h2:D:\projects\IntelliJIdea\jpa\src\test\resources\h2ForJPA"/>
+            <property name="hibernate.connection.username" value=""/>
+            <property name="hibernate.connection.password" value=""/>
+        </properties>
+    </persistence-unit>
+</persistence>
