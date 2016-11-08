@@ -8,10 +8,6 @@ import java.util.List;
  * Created by user on 06.11.2016.
  */
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "findAllEmployees",
-                query = "select e from Employee e")
-})
 public class Employee {
     @Id
     @GeneratedValue
