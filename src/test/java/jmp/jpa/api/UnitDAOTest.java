@@ -1,9 +1,10 @@
 package jmp.jpa.api;
 
-import jmp.jpa.models.Employee;
-import jmp.jpa.models.Unit;
 import jmp.jpa.model.utils.EmployeeCreator;
 import jmp.jpa.model.utils.UnitCreator;
+import jmp.jpa.models.Employee;
+import jmp.jpa.models.Unit;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,10 +25,16 @@ public class UnitDAOTest {
         dao.create(unit);
     }
 
+    @After
+    public void tearDown() throws Exception {
+        dao.close();
+    }
+
     @Test
     public void idForCreatedUnitWasGenerated() throws Exception {
         assertNotNull(unit.getId());
     }
+
     @Test
     public void allRelatedEmployeesHasCurrentUnit() throws Exception {
         for (Employee employee : unit.getEmployees()) {

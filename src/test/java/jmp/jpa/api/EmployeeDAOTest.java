@@ -1,9 +1,10 @@
 package jmp.jpa.api;
 
+import jmp.jpa.model.utils.EmployeeCreator;
 import jmp.jpa.models.Employee;
 import jmp.jpa.models.Personal;
 import jmp.jpa.models.Project;
-import jmp.jpa.model.utils.EmployeeCreator;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,6 +23,11 @@ public class EmployeeDAOTest {
         employee = EmployeeCreator.createEmployee();
         dao = new EmployeeDAO();
         dao.create(employee);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        dao.close();
     }
 
     @Test
@@ -55,9 +61,10 @@ public class EmployeeDAOTest {
     public void find() throws Exception {
         employee = EmployeeCreator.createEmployeeWithProject();
         dao.create(employee);
+        Employee foundEmployee = dao.find(this.employee.getId());
 
-        dao.find(employee.getId());
-        assertEquals(employee, dao.find(employee.getId()));
+        assertEquals(this.employee, foundEmployee);
+
     }
 
     @Test

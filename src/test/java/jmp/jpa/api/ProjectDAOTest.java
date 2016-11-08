@@ -1,9 +1,10 @@
 package jmp.jpa.api;
 
-import jmp.jpa.models.Employee;
-import jmp.jpa.models.Project;
 import jmp.jpa.model.utils.EmployeeCreator;
 import jmp.jpa.model.utils.ProjectCreator;
+import jmp.jpa.models.Employee;
+import jmp.jpa.models.Project;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +25,11 @@ public class ProjectDAOTest {
         dao.create(project);
     }
 
+    @After
+    public void tearDown() throws Exception {
+        dao.close();
+    }
+
     @Test
     public void idForCreatedProjectWasGenerated() throws Exception {
         assertNotNull(project.getId());
@@ -39,7 +45,7 @@ public class ProjectDAOTest {
         project = ProjectCreator.createProjectWithEmployees();
         dao.create(project);
 
-        for (Employee employee: project.getEmployeeList()) {
+        for (Employee employee : project.getEmployeeList()) {
             assertThat(employee.getProjectList(), hasItem(project));
         }
     }
