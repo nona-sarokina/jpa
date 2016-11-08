@@ -1,10 +1,9 @@
-package model.utils;
+package jmp.jpa.model.utils;
 
 import jmp.jpa.models.Employee;
 import jmp.jpa.models.Project;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

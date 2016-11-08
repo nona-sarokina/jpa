@@ -1,4 +1,4 @@
-package model.utils;
+package jmp.jpa.model.utils;
 
 import jmp.jpa.models.*;
 

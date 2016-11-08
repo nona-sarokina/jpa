@@ -1,9 +1,9 @@
-package api;
+package jmp.jpa.api;
 
 import jmp.jpa.models.Employee;
 import jmp.jpa.models.Project;
-import model.utils.EmployeeCreator;
-import model.utils.ProjectCreator;
+import jmp.jpa.model.utils.EmployeeCreator;
+import jmp.jpa.model.utils.ProjectCreator;
 import org.junit.Before;
 import org.junit.Test;
 
