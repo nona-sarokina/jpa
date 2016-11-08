@@ -1,26 +1,24 @@
-package api;
+package jmp.jpa.api;
 
 import jmp.jpa.models.Employee;
-import jmp.jpa.models.Project;
+import jmp.jpa.models.Unit;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 
 /**
  * Created by user on 07.11.2016.
  */
-public class ProjectDAO implements IBaseModelDAO<Project>, IProjectModelDAO {
+public class UnitDAO implements IBaseModelDAO<Unit>, IUnitModelDAO {
     protected EntityManager entityManager;
 
-    public ProjectDAO() {
-        entityManager = Persistence.createEntityManagerFactory(name).createEntityManager();
+    public UnitDAO() {
+        this.entityManager = Persistence.createEntityManagerFactory(name).createEntityManager();
     }
 
-
-    public void create(Project object) {
+    public void create(Unit object) {
 
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
@@ -30,18 +28,18 @@ public class ProjectDAO implements IBaseModelDAO<Project>, IProjectModelDAO {
     }
 
 
-    public Project find(String id) {
+    public Unit find(String id) {
 
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        Project project = entityManager.find(Project.class, id);
+        Unit unit = entityManager.find(Unit.class, id);
         transaction.commit();
 
-        return project;
+        return unit;
     }
 
     public void delete(String id) {
-        Project object = entityManager.find(Project.class, id);
+        Unit object = entityManager.find(Unit.class, id);
 
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
@@ -50,22 +48,23 @@ public class ProjectDAO implements IBaseModelDAO<Project>, IProjectModelDAO {
 
     }
 
-    public Project update(String id, Project object) {
+    public Unit update(String id, Unit object) {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
+
         transaction.commit();
         return object;
     }
 
 
-    public void assignEmployee(String id, Employee employee) {
+    public void addEmployee(String id, Employee employee) {
         EntityTransaction transaction = entityManager.getTransaction();
-        Project object = entityManager.find(Project.class, id);
-        if (object.getEmployeeList() == null) {
-            object.setEmployeeList(new ArrayList<Employee>());
+        Unit object = entityManager.find(Unit.class, id);
+        if (object.getEmployees() == null) {
+            object.setEmployees(new ArrayList<Employee>());
         }
         transaction.begin();
-        object.getEmployeeList().add(employee);
+        object.getEmployees().add(employee);
         transaction.commit();
     }
 }

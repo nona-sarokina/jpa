@@ -1,11 +1,10 @@
-package api;
+package jmp.jpa.api;
 
 import jmp.jpa.models.Employee;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 
 /**
  * Created by user on 07.11.2016.

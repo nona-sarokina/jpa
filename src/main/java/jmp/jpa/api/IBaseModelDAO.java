@@ -1,4 +1,4 @@
-package api;
+package jmp.jpa.api;
 
 /**
  * Created by user on 07.11.2016.

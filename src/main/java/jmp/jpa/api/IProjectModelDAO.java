@@ -1,4 +1,4 @@
-package api;
+package jmp.jpa.api;
 
 import jmp.jpa.models.Employee;
 
